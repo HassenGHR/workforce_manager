@@ -35,6 +35,8 @@ dependencies:
   intl:
   sqflite:
   share_plus:
+  google_fonts:
+  flutter_animate:
 
 
   # The following adds the Cupertino Icons font to your application.
