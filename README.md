@@ -1,10 +1,10 @@
 # Workforce Manager
 
-A Flutter mobile application for managing employee data, generating HR documents, and tracking workforce information with offline capabilities.
+A Flutter mobile application for managing employee data, generating HR documents, and tracking workforce information.
 
 ## Overview
 
-Workforce Manager is a standalone HR management tool that enables small to medium businesses to manage their employees and generate essential HR documentation without requiring an internet connection or backend integration. The app stores all data locally on the device using SQLite/Hive database.
+Workforce Manager is a standalone HR management tool that enables small to medium businesses to manage their employees and generate essential HR documentation. The app stores all data locally on the device using SQLite/Hive database.
 
 ## Key Features
 
