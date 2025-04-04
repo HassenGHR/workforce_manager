@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:workforce_manager/models/employee_model.dart';
-import 'package:workforce_manager/screens/employe_list_screen.dart';
+import 'package:workforce_manager/screens/employe_list_screen.dart' as emp;
+import 'package:workforce_manager/screens/employee_form_screen.dart';
+import 'package:workforce_manager/services/dummy_data.dart';
 import '../screens/document_screen.dart';
 import '../services/database_service.dart';
 import 'dart:ui';
@@ -530,7 +532,7 @@ class _HomeScreenState extends State<HomeScreen>
                 context,
                 PageRouteBuilder(
                   pageBuilder: (context, animation, secondaryAnimation) =>
-                      const EmployeeListScreen(),
+                      emp.EmployeeListScreen(),
                   transitionsBuilder:
                       (context, animation, secondaryAnimation, child) {
                     var begin = const Offset(1.0, 0.0);
@@ -558,6 +560,27 @@ class _HomeScreenState extends State<HomeScreen>
             () {
               HapticFeedback.mediumImpact();
               // Navigate to document screen
+              Navigator.push(
+                context,
+                PageRouteBuilder(
+                  pageBuilder: (context, animation, secondaryAnimation) =>
+                      DocumentScreen(
+                    employee: dummyEmployees[0],
+                  ),
+                  transitionsBuilder:
+                      (context, animation, secondaryAnimation, child) {
+                    var begin = const Offset(1.0, 0.0);
+                    var end = Offset.zero;
+                    var curve = Curves.easeInOut;
+                    var tween = Tween(begin: begin, end: end)
+                        .chain(CurveTween(curve: curve));
+                    return SlideTransition(
+                      position: animation.drive(tween),
+                      child: child,
+                    );
+                  },
+                ),
+              );
             },
           ),
         ),
@@ -822,7 +845,25 @@ class _HomeScreenState extends State<HomeScreen>
               colorScheme,
               () {
                 HapticFeedback.mediumImpact();
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  PageRouteBuilder(
+                    pageBuilder: (context, animation, secondaryAnimation) =>
+                        const EmployeeFormScreen(),
+                    transitionsBuilder:
+                        (context, animation, secondaryAnimation, child) {
+                      var begin = const Offset(1.0, 0.0);
+                      var end = Offset.zero;
+                      var curve = Curves.easeInOut;
+                      var tween = Tween(begin: begin, end: end)
+                          .chain(CurveTween(curve: curve));
+                      return SlideTransition(
+                        position: animation.drive(tween),
+                        child: child,
+                      );
+                    },
+                  ),
+                );
                 // Navigate to add employee screen
               },
             ),
